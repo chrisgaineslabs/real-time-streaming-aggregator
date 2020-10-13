@@ -1,4 +1,4 @@
-from processdata import processdata
+from processdata import processData
 import requests
 import signal
 import json
@@ -6,12 +6,15 @@ import json
 time_to_run_program = 60 # in secs
 
 def ingest():
-	initlist = []
+	total = 0
+	countries_dict = {}
 	r = requests.get('http://stream.meetup.com/2/rsvps', stream=True)
 	for line in r.iter_lines():
+		total += 1
 		decoded_line = line.decode('utf-8')
 		jsondict = json.loads(decoded_line)
-		processdata(jsondict)
+		print(total, processData(jsondict, countries_dict))
+
 
 class TimeoutException(Exception): #code from https://stackoverflow.com/questions/25027122/break-the-function-after-certain-time
 	pass
