@@ -2,10 +2,10 @@ import signal
 import operator
 import itertools
 
-def processData(event, total, countries_dict):
-	# total += 1
-	eventTime = event['event']['time']
-	eventUrl = event['event']['event_url']
+def processData(event, total, eventTime, eventUrl, countries_dict):
+	if event['event']['time'] > eventTime:
+		eventTime = event['event']['time']
+		eventUrl = event['event']['event_url']
 	eventCountry = event['group']['group_country']
 	if eventCountry in countries_dict:
 		countries_dict[eventCountry] += 1
@@ -22,9 +22,3 @@ def processData(event, total, countries_dict):
 	if len(list(flatten)) == 6:
 		co_1, co_1_count, co_2, co_2_count, co_3, co_3_count = flatten
 		return total, eventTime, eventUrl, co_1, co_1_count, co_2, co_2_count, co_3, co_3_count
-
-
-# the data should be in the following format
-
-## total,future_date,future_url,co_1,co_1_count,co_2,co_2_count,co_3,co_3_count
-
