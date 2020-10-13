@@ -30,6 +30,6 @@ signal.alarm(time_to_run_program)
 try:
 	ingest()
 except TimeoutException:
-	sdfghj
+	print('program ended after {} seconds'.format(time_to_run_program))
 else:
 	signal.alarm(0)
