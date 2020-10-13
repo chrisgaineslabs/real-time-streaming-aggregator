@@ -7,17 +7,7 @@ def processdata(event):
 	return eventTime, eventUrl, eventCountry
 
 
-# each event we need the following info
-
-## event['event']['time']
-
-## event['event']['event_url']
-
-## event['group']['group_country']
-
 # count the following
-
-## total number of rsvps in the time period
 
 ## the count of each group country during the time period
 
