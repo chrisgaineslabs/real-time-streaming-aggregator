@@ -1,4 +1,3 @@
-import signal
 import operator
 import itertools
 
