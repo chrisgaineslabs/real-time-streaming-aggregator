@@ -13,7 +13,7 @@ def ingest():
 		total += 1
 		decoded_line = line.decode('utf-8')
 		jsondict = json.loads(decoded_line)
-		print(total, processData(jsondict, countries_dict))
+		print(processData(jsondict, total, countries_dict))
 
 
 class TimeoutException(Exception): #code from https://stackoverflow.com/questions/25027122/break-the-function-after-certain-time

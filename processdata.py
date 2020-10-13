@@ -2,7 +2,8 @@ import signal
 import operator
 import itertools
 
-def processData(event, countries_dict):
+def processData(event, total, countries_dict):
+	# total += 1
 	eventTime = event['event']['time']
 	eventUrl = event['event']['event_url']
 	eventCountry = event['group']['group_country']
@@ -14,13 +15,13 @@ def processData(event, countries_dict):
 	flatten = list(itertools.chain(*sorted_d))
 	if len(flatten) == 2:
 		co_1, co_1_count = flatten
-		return eventTime, eventUrl, co_1, co_1_count
+		return total, eventTime, eventUrl, co_1, co_1_count
 	if len(flatten) == 4:
 		co_1, co_1_count, co_2, co_2_count = flatten
-		return eventTime, eventUrl, co_1, co_1_count, co_2, co_2_count
+		return total, eventTime, eventUrl, co_1, co_1_count, co_2, co_2_count
 	if len(list(flatten)) == 6:
 		co_1, co_1_count, co_2, co_2_count, co_3, co_3_count = flatten
-		return eventTime, eventUrl, co_1, co_1_count, co_2, co_2_count, co_3, co_3_count
+		return total, eventTime, eventUrl, co_1, co_1_count, co_2, co_2_count, co_3, co_3_count
 
 
 # the data should be in the following format
