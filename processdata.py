@@ -7,9 +7,9 @@ def processData(event, total, eventTime, eventUrl, countries_dict):
 		eventUrl = event['event']['event_url']
 	eventCountry = event['group']['group_country']
 
-	if eventCountry in countries_dict: # add country to dictionary if not there and initialize at 1
+	if eventCountry in countries_dict: # if country is here add 1 to the number of events with this country code
 		countries_dict[eventCountry] += 1
-	else: # if country is here add 1 to the number of events with this country code
+	else: # add country to dictionary if not there and initialize at 1
 		countries_dict[eventCountry] = 1
 
 	# sort country dict to highest three countries code counts
